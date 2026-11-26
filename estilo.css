@@ -1,0 +1,69 @@
+/* Identidade PICXEL Studio (26/11/2026): grafite neutro, uma cor por app, sem caixa alta espaçada nem cara de HUD. */
+:root {
+  --fundo: #0b0c0e; --folha: #ffffff08; --folha2: #ffffff0f; --folha3: #ffffff17; --linha: #ffffff12;
+  --texto: #e8eaed; --suave: #a9adb5; --fraco: #6d717a;
+  --raio: 14px; --raio-p: 10px;
+  --grad: linear-gradient(115deg, #5ce6ff, #00b4ec 50%, #3d6bff);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--fundo); color: var(--texto); font: 15px/1.6 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, b { font-family: "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+a { color: inherit; text-decoration: none; }
+.fraco { color: var(--fraco); }
+
+.topo { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px max(16px, calc((100% - 1100px) / 2)); background: color-mix(in srgb, var(--fundo) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 650; }
+.marca svg { width: 30px; height: 30px; display: block; }
+.topo nav { display: flex; gap: 22px; color: var(--suave); font-size: 14px; }
+.topo nav a:hover { color: var(--texto); }
+
+main { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+section { padding: 56px 0 8px; }
+h2 { font-size: 22px; font-weight: 650; margin: 0 0 20px; letter-spacing: -.01em; }
+
+.botao { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--raio-p); padding: 10px 16px; background: var(--folha2); color: var(--texto); font-weight: 550; transition: background .15s, filter .15s; cursor: pointer; border: 0; font: inherit; }
+.botao:hover { background: var(--folha3); }
+.botao.forte { background: var(--grad); color: #0b0c0e; font-weight: 650; box-shadow: 0 8px 24px #00b4ec33; }
+.botao.forte:hover { filter: brightness(1.07); }
+.botao.grande { padding: 14px 26px; font-size: 16px; }
+.botao.off { opacity: .45; pointer-events: none; }
+
+.heroi { text-align: center; padding: 72px 0 24px; }
+.heroi h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.1; font-weight: 750; margin: 0; letter-spacing: -.02em; }
+.heroi h1 em { font-style: normal; background: linear-gradient(115deg, #5ce6ff, #a6f000 35%, #f3853f 68%, #ff5a76); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.heroi p { color: var(--suave); max-width: 540px; margin: 18px auto 28px; }
+.heroi small { display: block; color: var(--fraco); margin-top: 12px; font-size: 13px; }
+
+.cartoes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.ct { --cor: #00b4ec; background: var(--folha); border-radius: var(--raio); padding: 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.ct svg { width: 60px; height: 60px; display: block; }
+.ct b { font-size: 17px; }
+.ct p { margin: 0; color: var(--suave); font-size: 13.5px; flex: 1; }
+.ct small { color: var(--fraco); font-size: 12px; }
+.ct .botao { width: 100%; }
+.ct .botao:not(.off):hover { background: color-mix(in srgb, var(--cor) 22%, transparent); }
+
+.passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: p; }
+.passos li { background: var(--folha); border-radius: var(--raio); padding: 18px; counter-increment: p; display: flex; flex-direction: column; gap: 6px; }
+.passos li::before { content: counter(p); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--grad); color: #0b0c0e; font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.passos span { color: var(--suave); font-size: 13.5px; }
+.passos i { font-style: normal; color: var(--texto); }
+
+.novidades { display: grid; gap: 10px; }
+.nv { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; background: var(--folha); border-radius: var(--raio); padding: 14px 16px; }
+.nv svg { width: 44px; height: 44px; display: block; }
+.nv b { display: block; } .nv b small { color: var(--fraco); font-weight: 400; font-size: 12.5px; margin-left: 8px; }
+.nv div div { color: var(--suave); font-size: 13.5px; white-space: pre-line; margin-top: 2px; }
+
+footer { max-width: 1100px; margin: 64px auto 0; padding: 22px 16px 34px; border-top: 1px solid var(--linha); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--fraco); font-size: 12.5px; }
+
+@media (max-width: 900px) {
+  .cartoes, .passos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .cartoes, .passos { grid-template-columns: 1fr; }
+  .topo nav { gap: 14px; font-size: 13px; }
+  .topo nav a:first-child { display: none; }
+  .heroi { padding-top: 48px; }
+}
